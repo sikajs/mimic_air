@@ -1,0 +1,20 @@
+= form_with(model: accommodation, local: true) do |form|
+  - if accommodation.errors.any?
+    div#error_explanation"
+      h2 = "#{pluralize(accommodation.errors.count, "error")} prohibited this accommodation from being saved:"
+      ul
+        - accommodation.errors.full_messages.each do |message|
+          li = message
+  div
+    = form.label :estate_type
+    = select(:accommodation, :estate_type, Accommodation.estate_types.to_a)
+    = form.label :share_type
+    = select(:accommodation, :share_type, Accommodation.share_types.to_a)
+    = form.label :summary
+    = form.text_field :summary
+    = form.label :description
+    = form.text_area :description
+
+  div.actions
+    = form.submit
+  

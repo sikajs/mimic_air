@@ -1,0 +1,23 @@
+p#notice 
+  = notice
+
+h1 accommodations
+
+table
+  thead
+    tr
+      th
+      th colspan="3" Operations
+
+  tbody
+    - @accommodations.each do |accommodation|
+      tr
+        td = accommodation.estate_type
+        td = accommodation.share_type
+        td = link_to 'Show', admin_accommodation_path(accommodation)
+        td = link_to 'Edit', edit_admin_accommodation_path(accommodation)
+        td = link_to 'Destroy', admin_accommodation_path(accommodation), method: :delete, data: { confirm: 'Are you sure?' }
+
+br
+
+= link_to 'New accommodation', new_admin_accommodation_path
